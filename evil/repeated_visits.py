@@ -8,8 +8,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def simple_cookie():
-    img = '2.jpg' if 'visited' in request.cookies else '1.jpg'
-    resp = make_response('<img src="{}">'.format(url_for('static', filename=img)))
+    if 'visited' not in request.cookies:
+        data, img = 42, '1.jpg'
+    else:
+        data, img = 47, '2.jpg'
+
+    resp = make_response('<img src="{}"><p>Data: <b>{}</b></p>'.format(
+        url_for('static', filename=img), data))
     resp.set_cookie('visited', 'true')
     return resp
 
