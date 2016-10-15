@@ -1,3 +1,5 @@
+"""Simple "hello world" site example."""
+
 from flask import Flask
 app = Flask(__name__)
 
