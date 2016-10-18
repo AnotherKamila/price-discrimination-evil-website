@@ -13,7 +13,7 @@ def simple_cookie():
     else:
         data, img = 47, '2.jpg'
 
-    resp = make_response('<img src="{}"><p>Data: <b>{}</b></p>'.format(
+    resp = make_response('<img src="{}"><p>Data: <b class="data">{}</b></p>'.format(
         url_for('static', filename=img), data))
     resp.set_cookie('visited', 'true')
     return resp
